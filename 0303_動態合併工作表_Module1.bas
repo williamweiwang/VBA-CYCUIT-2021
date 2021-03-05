@@ -1,17 +1,17 @@
-Attribute VB_Name = "Module1"
+Attribute VB_Name = "Module1" 'é–‹ç™¼å·¨é›†çš„æ¨¡çµ„
 
-Sub °ÊºA³æ±i¤u§@ªí()
-Attribute °ÊºA³æ±i¤u§@ªí.VB_ProcData.VB_Invoke_Func = " \n14"
-        Range("A1").FormulaR1C1 = "=COUNTIF(C[4],R[1]C[4])"
-    myc = Range("A1").Value
+Sub å‹•æ…‹å–®å¼µå·¥ä½œè¡¨() 'å·¨é›†åç¨±
+        Attribute å‹•æ…‹å–®å¼µå·¥ä½œè¡¨.VB_ProcData.VB_Invoke_Func = " \n14" 
+        Range("A1").FormulaR1C1 = "=COUNTIF(C[4],R[1]C[4])" 
+        myc = Range("A1").Value  
     
-    Rows("1:5").Delete Shift:=xlUp '§R°£1¨ì5¦C
+    Rows("1:5").Delete Shift:=xlUp 'åˆªé™¤1åˆ°5åˆ—
 
 For i = 1 To myc
-    Cells.Find(What:="¤U", After:=ActiveCell, LookIn:=xlFormulas, LookAt:= _
+    Cells.Find(What:="ä¸‹", After:=ActiveCell, LookIn:=xlFormulas, LookAt:= _
         xlPart, SearchOrder:=xlByRows, SearchDirection:=xlNext, MatchCase:=False _
         , MatchByte:=False, SearchFormat:=False).Activate
-        x = ActiveCell.Row ' "¤U"ªº§@¥ÎÀx¦s®æªºrow
+        x = ActiveCell.Row ' "ä¸‹"çš„ä½œç”¨å„²å­˜æ ¼çš„row
         y = x & ":" & x + 10 '12:22, 22:32, 32:42
     Rows(y).Delete Shift:=xlUp
 Next
