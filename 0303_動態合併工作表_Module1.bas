@@ -1,5 +1,3 @@
-Attribute VB_Name = "Module1" '開發巨集的模組
-
 Sub 動態單張工作表() '巨集名稱
         Attribute 動態單張工作表.VB_ProcData.VB_Invoke_Func = " \n14" 
         Range("A1").FormulaR1C1 = "=COUNTIF(C[4],R[1]C[4])" '計算次數
