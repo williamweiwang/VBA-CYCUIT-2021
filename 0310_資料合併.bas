@@ -9,7 +9,7 @@ Sub 第一個() '巨集名稱
         If i = 2 Then '避開標題重複
         Range("A1").Select '選擇A1儲存格子 CTRL + HOME
             Else
-                Range("A").Select
+                Range("A2").Select
                 End If
             Range(Selection, ActiveCell.SpecialCells(xlLastCell)).Select '選擇那一堆資料 CTRL + Shift + end
                 Selection.Copy '複製那一堆資料
