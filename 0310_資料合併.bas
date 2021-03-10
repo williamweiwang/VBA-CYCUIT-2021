@@ -10,7 +10,7 @@ Sub 第一個() '巨集名稱
             Range(Selection, ActiveCell.SpecialCells(xlLastCell)).Select '選擇那一堆資料 CTRL + Shift + end
                 Selection.Copy '複製那一堆資料
                 Sheets(1).Select '選擇第一張的工作表
-                    ActiveSheet.Paste '貼上在OK工作表
+                    ActiveSheet.Paste '貼上在第一張工作表
                     Application.CutCopyMode = False '清空剪貼簿
                     Selection.End(xlDown).Select '到資料最尾端 CTRL + 方向下
             Next
