@@ -16,6 +16,9 @@ Sub 第一個() '巨集名稱
                 Sheets(1).Select '選擇第一張的工作表
                     ActiveSheet.Paste '貼上在第一張工作表
                     Application.CutCopyMode = False '清空剪貼簿
-                    Selection.End(xlDown).Select '到資料最尾端 CTRL + 方向下
+                        Selection.End(xlDown).offset(1,0).Select '到資料最尾端 CTRL + 方向下
+                    'offset(1,0): 移至最後1個row的下1row
             Next
+
 End Sub
+            
