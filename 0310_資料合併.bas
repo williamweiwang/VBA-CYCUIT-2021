@@ -6,7 +6,11 @@ Sub 第一個() '巨集名稱
     For i = 2 To 5 '迴圈設計
     'Sheets(2)選第二張工作表 這行為了迴圈改成i
     Sheets(i).Select '選第i張工作表
+        If i = 2 Then '避開標題重複
         Range("A1").Select '選擇A1儲存格子 CTRL + HOME
+            Else
+                Range("A").Select
+                End If
             Range(Selection, ActiveCell.SpecialCells(xlLastCell)).Select '選擇那一堆資料 CTRL + Shift + end
                 Selection.Copy '複製那一堆資料
                 Sheets(1).Select '選擇第一張的工作表
