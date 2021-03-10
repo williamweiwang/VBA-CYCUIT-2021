@@ -25,7 +25,58 @@ Sub 第一個() '巨集名稱
                 Else 'else可以不用打
                 End if
                 Range("A1").Select '選擇A1儲存格子 CTRL + HOME
-                    
-                       
+        
+'-----以下為樞紐分析-----
+
+    Sheets.Add
+    ActiveSheet.Name = "分析"
+    ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:= _
+        "OK!R1C1:R1294C5", Version:=6).CreatePivotTable TableDestination:= _
+        "分析!R3C1", TableName:="樞紐分析表2", DefaultVersion:=6
+    Sheets("分析").Select
+    Cells(3, 1).Select
+    With ActiveSheet.PivotTables("樞紐分析表2")
+        .ColumnGrand = True
+        .HasAutoFormat = True
+        .DisplayErrorString = False
+        .DisplayNullString = True
+        .EnableDrilldown = True
+        .ErrorString = ""
+        .MergeLabels = False
+        .NullString = ""
+        .PageFieldOrder = 2
+        .PageFieldWrapCount = 0
+        .PreserveFormatting = True
+        .RowGrand = True
+        .SaveData = True
+        .PrintTitles = False
+        .RepeatItemsOnEachPrintedPage = True
+        .TotalsAnnotation = False
+        .CompactRowIndent = 1
+        .InGridDropZones = False
+        .DisplayFieldCaptions = True
+        .DisplayMemberPropertyTooltips = False
+        .DisplayContextTooltips = True
+        .ShowDrillIndicators = True
+        .PrintDrillIndicators = False
+        .AllowMultipleFilters = False
+        .SortUsingCustomLists = True
+        .FieldListSortAscending = False
+        .ShowValuesRow = False
+        .CalculatedMembersInFilters = False
+        .RowAxisLayout xlCompactRow
+    End With
+    With ActiveSheet.PivotTables("樞紐分析表2").PivotCache
+        .RefreshOnFileOpen = False
+        .MissingItemsLimit = xlMissingItemsDefault
+    End With
+    ActiveSheet.PivotTables("樞紐分析表2").RepeatAllLabels xlRepeatLabels
+    With ActiveSheet.PivotTables("樞紐分析表2").PivotFields("店家")
+        .Orientation = xlRowField
+        .Position = 1
+    End With
+    ActiveSheet.PivotTables("樞紐分析表2").AddDataField ActiveSheet.PivotTables("樞紐分析表2" _
+        ).PivotFields("數量"), "加總 - 數量", xlSum
 End Sub
+
             
