@@ -19,7 +19,7 @@ Sub 分類()
    
 '----------資料移轉----------
 
-For i = 2 To Sheets.Count '到最後一張
+For i = 2 To Sheets.Count '從2到最後一張
 
     Range("A1").Select 'CTRL+HOME
     Selection.AutoFilter '點資料-篩選
