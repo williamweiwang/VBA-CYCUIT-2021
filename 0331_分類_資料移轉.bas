@@ -1,8 +1,11 @@
 Sub 分類()
-'-----找唯一-----
 
-    Columns("C:C").AdvancedFilter Action:=xlFilterCopy, CriteriaRange:=Columns( _
-        "C:C"), CopyToRange:=Range("G1"), Unique:=True
+mydata = InputBox("請輸入分類欄號, 例:A,B,C,D", "10842284陳氏鸞")
+my_col = Range(mydata & "1").Column
+
+'-----找唯一-----
+    Columns(my_col).AdvancedFilter Action:=xlFilterCopy, CriteriaRange:=Columns( _
+        my_col), CopyToRange:=Range("G1"), Unique:=True
         
         
         Range("G2").Select
@@ -19,11 +22,11 @@ Sub 分類()
    
 '----------資料移轉----------
 
-For i = 2 To Sheets.Count '從2到最後一張
+For i = 2 To Sheets.Count '到最後一張
 
     Range("A1").Select 'CTRL+HOME
     Selection.AutoFilter '點資料-篩選
-    ActiveSheet.Range("$A$1:$F$312").AutoFilter Field:=3, Criteria1:=Sheets(i).Name '依工作表名稱篩選
+    ActiveSheet.Range("$A$1:$F$312").AutoFilter Field:=my_col, Criteria1:=Sheets(i).Name '依工作表名稱篩選
     Range(Selection, ActiveCell.SpecialCells(xlLastCell)).Select '選範圍 CTRL+SHIFT+END
     Selection.Copy '複製範圍
     Sheets(i).Select '選取特定表單
