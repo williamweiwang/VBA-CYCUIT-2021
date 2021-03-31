@@ -22,7 +22,7 @@ my_col = Range(mydata & "1").Column
    
 '----------資料移轉----------
 
-For i = 2 To Sheets.Count '到最後一張
+For i = 2 To Sheets.Count '從2到最後一張
 
     Range("A1").Select 'CTRL+HOME
     Selection.AutoFilter '點資料-篩選
@@ -37,5 +37,14 @@ For i = 2 To Sheets.Count '到最後一張
     Selection.AutoFilter '再點一次資料-篩選
     
     Next
+
+'----------匯出----------
+For i = 2 To Sheets.Count '從2到最後一張
+    file_name = Sheets(2).Name '檔名為第二張的表單名
+    Sheets(2).Move '移動或複製
+    ActiveWorkbook.SaveAs Filename:=file_name & ".xlsx", _
+        FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False '存檔+確定檔名 啟用聚集活頁簿
+    ActiveWorkbook.Close '檔案-關閉
     
+    Next
 End Sub
