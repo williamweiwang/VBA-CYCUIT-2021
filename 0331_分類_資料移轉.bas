@@ -16,5 +16,23 @@ Sub 分類()
             
         Wend
             Selection.EntireColumn.Delete '刪除多餘欄位
-            
+   
+'----------資料移轉----------
+
+For i = 2 To Sheets.Count '到最後一張
+
+    Range("A1").Select 'CTRL+HOME
+    Selection.AutoFilter '點資料-篩選
+    ActiveSheet.Range("$A$1:$F$312").AutoFilter Field:=3, Criteria1:=Sheets(i).Name '依工作表名稱篩選
+    Range(Selection, ActiveCell.SpecialCells(xlLastCell)).Select '選範圍 CTRL+SHIFT+END
+    Selection.Copy '複製範圍
+    Sheets(i).Select '選取特定表單
+    ActiveSheet.Paste '貼上
+    Application.CutCopyMode = False '退出剪貼簿
+    Sheets(1).Select '選取第一張表單
+    Range("A1").Select 'CTRL+HOME
+    Selection.AutoFilter '再點一次資料-篩選
+    
+    Next
+    
 End Sub
