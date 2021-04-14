@@ -1,0 +1,15 @@
+Sub 統計()
+Dim all_rng As Range
+
+    Range("A1").Select '選A1儲存格
+    
+Set all_rng = ActiveSheet.UsedRange '自動偵測目前用的範圍 usedrange就是ctrl+shift+end
+end_row = all_rng.Rows.Count '數看看總共有幾個rows
+end_col = all_rng.Columns.Count '數總欄數
+fil_adr = Cells(1, end_col + 1).Address '新的資料儲存位置
+
+Range("J2:J" & end_row).FormulaR1C1 = "=SUM(RC[-8]:RC[-1])"
+
+    Columns("A:A").AdvancedFilter Action:=xlFilterCopy, CriteriaRange:=Columns( _
+        "A:A"), CopyToRange:=Range(fil_adr), Unique:=True
+End Sub
