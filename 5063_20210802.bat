@@ -1,3 +1,8 @@
+Sub Macro1()
+'
+' Macro1 Macro
+' 巨集由 01561 錄製，時間: 2021/08/02
+'
     Selection.AutoFilter
     ActiveWorkbook.Names.Add Name:="'VES_SOMX5063_65401429_20200201-'!_FilterDatabase", RefersTo:="='VES_SOMX5063_65401429_20200201-'!$A$1:$AK$1", Visible:=False
     Range("H1").Select
@@ -49,13 +54,11 @@
     Selection.FormulaR1C1 = "S Month"
     Range("R2").Select
     Selection.FormulaR1C1 = "=IF(AND(Q2>=" & """" & "2020/08" & """" & ",Q2<" & """" & "2021/08" & """" & "),MONTH(Q2),0)"
-    Selection.AutoFill Destination:=Range("R2:R3543"), Type:=xlFillDefault
+    Selection.AutoFill Destination:=Range("R2").EntireColumn, Type:=xlFillDefault
     Range("R2:R3543").Select
-    ActiveWindow.ScrollRow = 1
     Selection.FormulaR1C1 = "=IF(AND(S2>=" & """" & "2020/08" & """" & ",S2<" & """" & "2021/08" & """" & "),MONTH(S2),0)"
-    Selection.AutoFill Destination:=Range("T2:T3543"), Type:=xlFillDefault
+    Selection.AutoFill Destination:=Range("T2").EntireColumn, Type:=xlFillDefault
     Range("T2:T3543").Select
-    ActiveWindow.ScrollRow = 1
     Columns("U:U").Select
     Selection.Insert Shift:=xlShiftToRight
     Range("U1").Select
@@ -87,3 +90,5 @@
     End With
     ActiveSheet.PivotTable.AddDataField Field:=ActiveSheet.PivotTable.PivotField
 End Sub
+
+
